@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 
 public class DataBaseConnect {
 
-    private static final String dbURL = "jdbc:sqlite:resources/clinic.db";
+    private static final String dbURL = "jdbc:sqlite:clinic-appointment/resources/clinic.db";
+
 
     public static Connection getConnection(){
         try{

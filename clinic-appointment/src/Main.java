@@ -1,13 +1,12 @@
 import databaseManager.DataBaseConnect;
+import databaseManager.initializeTable;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args){
-        System.out.println("Hello");
-        System.out.println("Mak");
-
+    public static void main(String[] args) throws SQLException {
         System.out.println(DataBaseConnect.getConnection());
+        initializeTable.createTables();
     }
 }
