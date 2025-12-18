@@ -1,4 +1,4 @@
-import dbhelper.DBHelper;
+import databaseManager.DataBaseConnect;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -8,10 +8,6 @@ public class Main {
         System.out.println("Hello");
         System.out.println("Mak");
 
-        try(Connection conn=DBHelper.getConnection()){
-            System.out.println(conn!=null? "Done":"Fail");
-        }catch (SQLException e){
-            System.out.println("Error"+e.getMessage());
-        }
+        System.out.println(DataBaseConnect.getConnection());
     }
 }
