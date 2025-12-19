@@ -1,6 +1,7 @@
 package entities;
 
 public class Patient extends Person{
+    private int id;//βαζω id για getter setter ετσι ωστε να δημιουργηθει μονο του στην addPatient
     private String fathersName;
     private String amka;
     private String emergencyCall;
@@ -8,7 +9,7 @@ public class Patient extends Person{
     private String notes;
 
 
-    public Patient(String firstName, String lastName, String fathersName, String amka, String phoneNumber, String emergencyCall, String address, String notes){
+    public Patient(String firstName,String lastName,String phoneNumber,String fathersName,String amka,String emergencyCall,String address,String notes){//εβαλα παραμετρους στον constructor
         super(firstName, lastName, phoneNumber);
         this.fathersName = fathersName;
         this.amka = amka;
@@ -16,6 +17,11 @@ public class Patient extends Person{
         this.address = address;
         this.notes = notes;
     }
+
+
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
 
     public String getFathersName() {
         return fathersName;

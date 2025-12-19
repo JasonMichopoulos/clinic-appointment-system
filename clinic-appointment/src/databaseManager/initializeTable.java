@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class initializeTable {
     public static void createTables() throws SQLException {
         String sql = """
-                CREATE TABLE patients(
+                CREATE TABLE IF NOT EXISTS patients(
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 first_name VARCHAR(255) NOT NULL,
                 last_name VARCHAR(255) NOT NULL,
@@ -45,7 +45,7 @@ public class initializeTable {
         } catch (SQLException e) {
             System.err.println("Error: " + e.getMessage());
         }
-        
+
         String sql2= """
                 CREATE TABLE IF NOT EXISTS doctors(
                     id INT AUTO_INCREMENT PRIMARY KEY,
