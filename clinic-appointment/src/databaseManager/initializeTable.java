@@ -26,8 +26,6 @@ public class initializeTable {
             System.err.println("Error: " + e.getMessage());
         }
 
-
-
         String sql1= """
                 CREATE TABLE IF NOT EXISTS appointments(
                     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -47,8 +45,7 @@ public class initializeTable {
         } catch (SQLException e) {
             System.err.println("Error: " + e.getMessage());
         }
-
-
+        
         String sql2= """
                 CREATE TABLE IF NOT EXISTS doctors(
                     id INT AUTO_INCREMENT PRIMARY KEY,
