@@ -5,6 +5,8 @@ public abstract class Person {
     private String lastName;
     private String phoneNumber;
 
+    public Person(){};// κενος constructor για να μπορεσω να αναζητησω ασθενη με βαση το id, στο dao
+
     public Person(String firstName, String lastName, String phoneNumber){
         this.firstName = firstName;
         this.lastName = lastName;

@@ -8,6 +8,7 @@ public class Patient extends Person{
     private String address;
     private String notes;
 
+    public Patient(){} // κενος constructor για να μπορεσω να αναζητησω ασθενη με βαση το id, στο dao
 
     public Patient(String firstName,String lastName,String phoneNumber,String fathersName,String amka,String emergencyCall,String address,String notes){//εβαλα παραμετρους στον constructor
         super(firstName, lastName, phoneNumber);
@@ -61,6 +62,22 @@ public class Patient extends Person{
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    //toString() ετσι ωστε να εμφανιζει ομοιομορφα τα αποτελεσματα
+    @Override
+    public String toString(){
+        return "Patient{" +"\n"+
+                "First Name: " + getFirstName()+"\n"+
+                "Last Name: " +getLastName()+"\n"+
+                "Father's Name: " +getFathersName()+"\n"+
+                "Phone Number: " +getPhoneNumber()+"\n"+
+                "AMKA: " +getAmka()+"\n"+
+                "Emergency Call: " +getEmergencyCall()+"\n"+
+                "Address: " +getAddress()+"\n"+
+                "Notes: "+getNotes()+"\n"+
+                "}"+"\n"+
+                "----------------------------------------------"+"\n";
     }
 
 }
