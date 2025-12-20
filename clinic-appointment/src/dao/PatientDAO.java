@@ -158,6 +158,48 @@ public class PatientDAO {
         return patients;
     }
 
+    public int deleteAll() {
+        String sql = "DELETE  FROM patients";
+
+        int rows = 0;
+        try (Connection conn = DataBaseConnect.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            rows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+        return rows;
+    }
+
+    public boolean updatePatientById(Patient patient){
+        String sql="UPDATE patients SET first_name=?, last_name=?,father_name=?, amka=?, phone_number=?, emergency_call=?, address=? notes=?";
+        int updatedRows=0;
+
+        try(Connection conn=DataBaseConnect.getConnection();
+           PreparedStatement ps=conn.prepareStatement(sql)){
+
+            ps.setString(1,patient.getFirstName());
+            ps.setString(2, patient.getLastName());
+            ps.setString(3, patient.getAmka());
+            ps.setString(4, patient.getPhoneNumber());
+            ps.setString(5,patient.getEmergencyCall());
+            ps.setString(6, patient.getAddress());
+            ps.setString(7,patient.getNotes());
+
+            updatedRows=ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        if(updatedRows>0){
+            return true;
+        }else{
+            return false;
+        }
+
+
+    }
 
 
 

@@ -9,8 +9,6 @@
       <change beforePath="$PROJECT_DIR$/clinic-appointment/resources/clinic.db" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/resources/clinic.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clinic-appointment/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clinic-appointment/src/dao/PatientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/dao/PatientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clinic-appointment/src/entities/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/entities/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clinic-appointment/src/entities/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/entities/Person.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,7 @@
       <workItem from="1766095825795" duration="1384000" />
       <workItem from="1766147199909" duration="5879000" />
       <workItem from="1766243649126" duration="3000" />
-      <workItem from="1766243682188" duration="4396000" />
+      <workItem from="1766243682188" duration="5803000" />
     </task>
     <servers />
   </component>

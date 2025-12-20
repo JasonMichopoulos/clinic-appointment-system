@@ -41,10 +41,12 @@ public class Main {
         //System.out.println(pdao.findByAMKA("29245678390"));
 
         //Test findAll
-        for(Patient patient: patientList){
-            System.out.println(patient);
-        }
+//        for(Patient patient: patientList){
+//            System.out.println(patient);
+//        }
 
+        //Test deleteAll
+        //pdao.deleteAll();
 
 
 
