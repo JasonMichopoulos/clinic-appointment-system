@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) throws SQLException {
         System.out.println(DataBaseConnect.getConnection());
-        //initializeTable.createTables();
+        initializeTable.createTables();
 
         //Test addPatient
         PatientDAO pdao=new PatientDAO();
@@ -20,7 +20,7 @@ public class Main {
         //pdao.addPatient(patient);
         //Patient patient=new Patient("Xrhstos","Papadopoulos","6912343674","Kwstas","123453689011","6902345677","Anthokipwn 36","Problhma sthn kardia");
         //pdao.addPatient(patient);
-        Patient patient=new Patient("Makhs","Papadopoulos","6212343634","Xrhstos","19245678900","9902345672","Anthokipwn 36","Problhma sthn kardia");
+        Patient patient=new Patient("Makhs","Papadopoulos","6212323664","Xrhstos","19245678990","9902345672","Anthokipwn 36","Problhma sthn kardia");
         pdao.addPatient(patient);
     }
 }
