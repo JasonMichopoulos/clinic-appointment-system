@@ -4,20 +4,25 @@ import java.time.LocalDateTime;
 
 public class Appointment {
 
-
     private LocalDateTime start_date; // Εναρξη ραντεβου
-    private LocalDateTime end_date; // Ληξη ραντεβου
-    private Doctor doctor; // Ο γιατρος
-    private Patient patient; // Ο ασθενης
-    //Constructor
-    public Appointment(LocalDateTime start_date, LocalDateTime end_date, Doctor doctor, Patient patient){
+    private LocalDateTime end_date;   // Ληξη ραντεβου
+    private Doctor doctor;            // Ο γιατρος
+    private Patient patient;          // Ο ασθενης
+
+    // Constructor
+    public Appointment(
+            LocalDateTime start_date,
+            LocalDateTime end_date,
+            Doctor doctor,
+            Patient patient
+    ) {
         this.start_date = start_date;
         this.end_date = end_date;
         this.doctor = doctor;
         this.patient = patient;
     }
 
-    //Getters - Setters
+    // Getters - Setters
     public LocalDateTime getStart_date() {
         return start_date;
     }

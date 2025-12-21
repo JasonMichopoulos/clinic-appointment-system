@@ -1,54 +1,87 @@
+import dao.DoctorDAO;
 import dao.PatientDAO;
 import databaseManager.initializeTable;
+import entities.Doctor;
 import entities.Patient;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class Main {
+
     public static void main(String[] args) throws SQLException {
-        //System.out.println(DataBaseConnect.getConnection());
+        // Δημιουργία πινάκων στη βάση
         initializeTable.createTables();
 
-        //Test addPatient
-        PatientDAO pdao=new PatientDAO();
-        List<Patient> patientList=pdao.findAll();
+        PatientDAO pdao = new PatientDAO();
+        DoctorDAO ddao = new DoctorDAO();
 
+        // --------------------------
+        // Test addPatient
+        // --------------------------
+        // Παράδειγμα δημιουργίας ασθενών με null ID
+        // Patient patient = new Patient("Xarhs","Makridhs","6912345678","Anesths","123456789011","6912345677","Anthokipwn 36","Problhma sthn kardia");
 
-        //Patient patient=new Patient("Xarhs","Makridhs","6912345678","Anesths","123456789011","6912345677","Anthokipwn 36","Problhma sthn kardia"); NULL ID
+        // Παράδειγμα δημιουργίας και προσθήκης ασθενών
+        /*
+        Patient patient1 = new Patient("Nikos", "Kalantas", "6912343678", "Kwstas", "123456689011", "6982345677", "Anthokipwn 36", "Problhma sthn kardia");
+        pdao.addPatient(patient1);
 
+        Patient patient2 = new Patient("Xrhstos", "Papadopoulos", "6912343674", "Kwstas", "123453689011", "6902345677", "Anthokipwn 36", "Problhma sthn kardia");
+        pdao.addPatient(patient2);
 
-//        Patient patient=new Patient("Nikos","Kalantas","6912343678","Kwstas","123456689011","6982345677","Anthokipwn 36","Problhma sthn kardia");
-//        pdao.addPatient(patient);
-//        Patient patient2=new Patient("Xrhstos","Papadopoulos","6912343674","Kwstas","123453689011","6902345677","Anthokipwn 36","Problhma sthn kardia");
-//        pdao.addPatient(patient2);
-//        Patient patient3=new Patient("Makhs","Papadopoulos","6212323664","Xrhstos","19245678990","9902345672","Anthokipwn 36","Problhma sthn kardia");
-//        pdao.addPatient(patient3);
-//        Patient patient4 =new Patient("Nikos","Xrhstou","6212323684","Xrhstos","29245678390","9902325372","Anthokipwn 36","Problhma sthn kardia");
-//        pdao.addPatient(patient4);
+        Patient patient3 = new Patient("Makhs", "Papadopoulos", "6212323664", "Xrhstos", "19245678990", "9902345672", "Anthokipwn 36", "Problhma sthn kardia");
+        pdao.addPatient(patient3);
 
-        //Test deleteById
-        //pdao.deleteById(4);
-        //System.out.println("Done");
+        Patient patient4 = new Patient("Nikos", "Xrhstou", "6212323684", "Xrhstos", "29245678390", "9902325372", "Anthokipwn 36", "Problhma sthn kardia");
+        pdao.addPatient(patient4);
+        */
 
-        //Test deleteByAMKA
-        //pdao.deleteByAMKA("29245678390");
+        // --------------------------
+        // Test deleteById
+        // --------------------------
+        // pdao.deleteById(4);
+        // System.out.println("Done");
 
-        //Test findById
-        //System.out.println(pdao.findById(4));
+        // --------------------------
+        // Test deleteByAMKA
+        // --------------------------
+        // pdao.deleteByAMKA("29245678390");
 
-        //Test find by amka
-        //System.out.println(pdao.findByAMKA("29245678390"));
+        // --------------------------
+        // Test findById
+        // --------------------------
+        // System.out.println(pdao.findById(4));
 
-        //Test findAll
-//        for(Patient patient: patientList){
-//            System.out.println(patient);
-//        }
+        // --------------------------
+        // Test findByAMKA
+        // --------------------------
+        // System.out.println(pdao.findByAMKA("29245678390"));
 
-        //Test deleteAll
-        //pdao.deleteAll();
+        // --------------------------
+        // Test findAll
+        // --------------------------
+        /*
+        List<Patient> patientList = pdao.findAll();
+        for (Patient patient : patientList) {
+            System.out.println(patient);
+        }
+        */
 
+        // --------------------------
+        // Test deleteAll
+        // --------------------------
+        // pdao.deleteAll();
 
+        // --------------------------
+        // Test addDoctor
+        // --------------------------
+        // Doctor doctor = new Doctor("Nikos", "Xrhstou", "123456789", "Kardiologos");
+        // ddao.addDoctor(doctor);
 
+        // --------------------------
+        // Test deleteById
+        // --------------------------
+        ddao.deleteById(1);
     }
 }

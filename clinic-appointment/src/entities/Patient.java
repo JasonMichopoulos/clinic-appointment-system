@@ -1,16 +1,21 @@
 package entities;
 
-public class Patient extends Person{
-    private int id;//βαζω id για getter setter ετσι ωστε να δημιουργηθει μονο του στην addPatient
+public class Patient extends Person {
+
+    private int id; // Βάζω id για getter/setter ώστε να δημιουργηθεί μόνο του στην addPatient
     private String fathersName;
     private String amka;
     private String emergencyCall;
     private String address;
     private String notes;
 
-    public Patient(){} // κενος constructor για να μπορεσω να αναζητησω ασθενη με βαση το id, στο dao
+    // Κενός constructor για να μπορέσω να αναζητήσω ασθενή με βάση το id στο DAO
+    public Patient() {}
 
-    public Patient(String firstName,String lastName,String phoneNumber,String fathersName,String amka,String emergencyCall,String address,String notes){//εβαλα παραμετρους στον constructor
+    // Constructor με παραμέτρους
+    public Patient(String firstName, String lastName, String phoneNumber,
+                   String fathersName, String amka, String emergencyCall,
+                   String address, String notes) {
         super(firstName, lastName, phoneNumber);
         this.fathersName = fathersName;
         this.amka = amka;
@@ -19,10 +24,14 @@ public class Patient extends Person{
         this.notes = notes;
     }
 
+    // Getters και Setters
+    public int getId() {
+        return id;
+    }
 
-    public int getId() {return id;}
-
-    public void setId(int id) {this.id = id;}
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFathersName() {
         return fathersName;
@@ -64,20 +73,19 @@ public class Patient extends Person{
         this.notes = notes;
     }
 
-    //toString() ετσι ωστε να εμφανιζει ομοιομορφα τα αποτελεσματα
+    // toString για ομοιομορφη εμφάνιση αποτελεσμάτων
     @Override
-    public String toString(){
-        return "Patient{" +"\n"+
-                "First Name: " + getFirstName()+"\n"+
-                "Last Name: " +getLastName()+"\n"+
-                "Father's Name: " +getFathersName()+"\n"+
-                "Phone Number: " +getPhoneNumber()+"\n"+
-                "AMKA: " +getAmka()+"\n"+
-                "Emergency Call: " +getEmergencyCall()+"\n"+
-                "Address: " +getAddress()+"\n"+
-                "Notes: "+getNotes()+"\n"+
-                "}"+"\n"+
-                "----------------------------------------------"+"\n";
+    public String toString() {
+        return "Patient{" + "\n" +
+                "First Name: " + getFirstName() + "\n" +
+                "Last Name: " + getLastName() + "\n" +
+                "Father's Name: " + getFathersName() + "\n" +
+                "Phone Number: " + getPhoneNumber() + "\n" +
+                "AMKA: " + getAmka() + "\n" +
+                "Emergency Call: " + getEmergencyCall() + "\n" +
+                "Address: " + getAddress() + "\n" +
+                "Notes: " + getNotes() + "\n" +
+                "}" + "\n" +
+                "----------------------------------------------" + "\n";
     }
-
 }

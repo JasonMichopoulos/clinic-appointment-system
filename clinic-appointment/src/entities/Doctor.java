@@ -2,16 +2,27 @@ package entities;
 
 import java.util.ArrayList;
 
-public class Doctor extends Person{
-    private String sector; // Τομεας
-    private ArrayList<Patient> patient; // Ασθενεις ( ενας γιατρος μπορει να εχει πανω απο 1 ασθενη )
+public class Doctor extends Person {
 
-    public Doctor(String firstName, String lastName, String phoneNumber, String sector, Patient patient){
+    private int id; // Προσθετω id
+    private String sector; // Τομεας
+    private ArrayList<Patient> patients; // Ασθενεις (ένας γιατρός μπορεί να έχει πάνω από 1 ασθενή)
+
+    public Doctor() {}
+
+    public Doctor(String firstName, String lastName, String phoneNumber, String sector) {
         super(firstName, lastName, phoneNumber);
         this.sector = sector;
-        this.patient = new ArrayList<Patient>();
+        this.patients = new ArrayList<>();
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getSector() {
         return sector;
@@ -21,11 +32,11 @@ public class Doctor extends Person{
         this.sector = sector;
     }
 
-    public ArrayList<Patient> getPatient() {
-        return patient;
+    public ArrayList<Patient> getPatients() {
+        return patients;
     }
 
-    public void setPatient(ArrayList<Patient> patient) {
-        this.patient = patient;
+    public void setPatients(ArrayList<Patient> patients) {
+        this.patients = patients;
     }
 }

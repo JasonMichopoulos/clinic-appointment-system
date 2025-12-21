@@ -5,24 +5,29 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DataBaseConnect {
+public final class DataBaseConnect {
 
-    private static final String dbURL = "jdbc:sqlite:clinic-appointment/resources/clinic.db";
+    private static final String DB_URL =
+            "jdbc:sqlite:clinic-appointment/resources/clinic.db";
 
+    private DataBaseConnect() {
+        // Utility class – prevent instantiation
+    }
 
-    public static Connection getConnection(){
+    public static Connection getConnection() {
         try {
-            Connection conn = DriverManager.getConnection(dbURL);
+            Connection connection = DriverManager.getConnection(DB_URL);
+            enableForeignKeys(connection);
+            return connection;
 
-            // ΕΝΕΡΓΟΠΟΙΗΣΗ FOREIGN KEYS
-            try (Statement stmt = conn.createStatement()) {
-                stmt.execute("PRAGMA foreign_keys = ON");
-            }
-
-            return conn;
         } catch (SQLException e) {
             throw new RuntimeException("Cannot connect to database", e);
         }
     }
 
+    private static void enableForeignKeys(Connection connection) throws SQLException {
+        try (Statement stmt = connection.createStatement()) {
+            stmt.execute("PRAGMA foreign_keys = ON");
+        }
+    }
 }
