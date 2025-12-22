@@ -149,7 +149,7 @@ public class PatientDAO {
         }
     }
 
-    public boolean updatePatientById(Patient patient) {
+    public boolean updatePatientById(Patient patient, int id) {
         String sql =
                 "UPDATE patients SET " +
                         "first_name = ?, " +
@@ -173,7 +173,7 @@ public class PatientDAO {
             pstmt.setString(6, patient.getEmergencyCall());
             pstmt.setString(7, patient.getAddress());
             pstmt.setString(8, patient.getNotes());
-            pstmt.setInt(9, patient.getId());
+            pstmt.setInt(9, id);
 
             return pstmt.executeUpdate() > 0;
 

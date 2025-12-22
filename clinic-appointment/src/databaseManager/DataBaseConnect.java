@@ -10,9 +10,6 @@ public final class DataBaseConnect {
     private static final String DB_URL =
             "jdbc:sqlite:clinic-appointment/resources/clinic.db";
 
-    private DataBaseConnect() {
-        // Utility class – prevent instantiation
-    }
 
     public static Connection getConnection() {
         try {
