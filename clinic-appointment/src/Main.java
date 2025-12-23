@@ -1,14 +1,18 @@
 import dao.DoctorDAO;
 import dao.PatientDAO;
+import databaseManager.DataBaseConnect;
 import databaseManager.initializeTable;
 import entities.Doctor;
 import entities.Patient;
 import enums.Gender;
 import services.PatientServices;
 
+
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListResourceBundle;
 
 public class Main {
 
@@ -79,27 +83,51 @@ public class Main {
         // --------------------------
         // Test addDoctor
         // --------------------------
-        // Doctor doctor = new Doctor("Nikos", "Xrhstou", "123456789", "Kardiologos");
-        // ddao.addDoctor(doctor);
+        //Doctor doctor = new Doctor("Nikos", "Xrhstou", "123456789", "Kardiologos");
+        //ddao.addDoctor(doctor);
 
         // --------------------------
         // Test deleteById
         // --------------------------
 
-        Patient patient = new Patient(
-                "Syno",
-                "og",
-                "6912345608",
-                "giorgos",
-                "12121212122",
-                "6912345678",
-                Gender.MALE,
-                LocalDate.now(),
-                "olimpiados",
-                "asdasd");
+//        Patient patient = new Patient(
+//                "Syno",
+//                "og",
+//                "6912345608",
+//                "giorgos",
+//                "12121212122",
+//                "6912345678",
+//                Gender.MALE,
+//                LocalDate.now(),
+//                "olimpiados",
+//                "asdasd");
 
-        pdao.addPatient(patient);
+        //pdao.addPatient(patient);
 
-//        System.out.println(PatientServices.loginPatient("6212323684","29245678390"));
+        //System.out.println(PatientServices.loginPatient("6212323684","29245678390"));
+
+        //TEST addDoctor
+        //Doctor doctor1= new Doctor("Kwstas", "Petroy", "123456189", "Pathologos");
+        //ddao.addDoctor(doctor1);
+
+//        List<Doctor> doctorList=ddao.findBySector("Kardiologos");
+//        for(Doctor d:doctorList){
+//            System.out.println(d);
+//
+//        }
+
+        //Test findbyId
+        //System.out.println(ddao.findById(1));
+        //TEST findAll()
+//        List<Doctor> doctorList=ddao.findAll();
+//        for(Doctor d:doctorList){
+//            System.out.println(d);
+//        }
+
     }
+
+
+
+
+
 }

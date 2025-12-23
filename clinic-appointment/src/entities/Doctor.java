@@ -8,7 +8,7 @@ public class Doctor extends Person {
     private String sector; // Τομεας
     private ArrayList<Patient> patients; // Ασθενεις (ένας γιατρός μπορεί να έχει πάνω από 1 ασθενή)
 
-    public Doctor() {}
+    public Doctor() {};
 
     public Doctor(String firstName, String lastName, String phoneNumber, String sector) {
         super(firstName, lastName, phoneNumber);
@@ -39,4 +39,17 @@ public class Doctor extends Person {
     public void setPatients(ArrayList<Patient> patients) {
         this.patients = patients;
     }
+
+    public String toString(){
+        return "Doctor{" +"\n"+
+                "First Name: " +getFirstName()+"\n"+
+                "Last Name: " +getLastName()+"\n"+
+                "Phone Number: " +getPhoneNumber()+"\n"+
+                "Sector: " +getSector()+"\n"+
+                "}"+"\n"+
+                "----------------------------------------------" + "\n";
+    }
+
+
+
 }
