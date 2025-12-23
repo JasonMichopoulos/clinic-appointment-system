@@ -1,4 +1,4 @@
-package Enums;
+package enums;
 
 public enum LoginStatus {
     AMKA_NOT_FOUND("AMKA not found"),

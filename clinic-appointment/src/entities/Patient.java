@@ -1,11 +1,17 @@
 package entities;
 
+import enums.Gender;
+
+import java.time.LocalDate;
+
 public class Patient extends Person {
 
     private int id; // Βάζω id για getter/setter ώστε να δημιουργηθεί μόνο του στην addPatient
     private String fathersName;
     private String amka;
     private String emergencyCall;
+    private Gender gender;
+    private LocalDate dateofbirth;
     private String address;
     private String notes;
 
@@ -14,12 +20,14 @@ public class Patient extends Person {
 
     // Constructor με παραμέτρους
     public Patient(String firstName, String lastName, String phoneNumber,
-                   String fathersName, String amka, String emergencyCall,
+                   String fathersName, String amka, String emergencyCall, Gender gender, LocalDate dateofbirth,
                    String address, String notes) {
         super(firstName, lastName, phoneNumber);
         this.fathersName = fathersName;
         this.amka = amka;
         this.emergencyCall = emergencyCall;
+        this.gender = gender;
+        this.dateofbirth = dateofbirth;
         this.address = address;
         this.notes = notes;
     }
@@ -57,6 +65,22 @@ public class Patient extends Person {
         this.emergencyCall = emergencyCall;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public LocalDate getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public void setDateofbirth(LocalDate dateofbirth) {
+        this.dateofbirth = dateofbirth;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -88,4 +112,6 @@ public class Patient extends Person {
                 "}" + "\n" +
                 "----------------------------------------------" + "\n";
     }
+
+
 }

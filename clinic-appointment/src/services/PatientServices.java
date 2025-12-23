@@ -1,7 +1,7 @@
 package services;
 
-import Enums.LoginStatus;
-import Enums.RegisterStatus;
+import enums.LoginStatus;
+import enums.RegisterStatus;
 import Utils.Validations;
 import dao.PatientDAO;
 import entities.Patient;
@@ -23,7 +23,6 @@ public class PatientServices {
         }
         pdao.addPatient(patient);
         return RegisterStatus.SUCCESSFULL.getDesc();
-
     }
 
     public static String loginPatient(String phone, String AMKA){
@@ -36,6 +35,5 @@ public class PatientServices {
         }else{
             return LoginStatus.SUCCESSFULL.getDesc() + " amka: " + AMKA;
         }
-
     }
 }

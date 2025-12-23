@@ -3,9 +3,11 @@ import dao.PatientDAO;
 import databaseManager.initializeTable;
 import entities.Doctor;
 import entities.Patient;
+import enums.Gender;
 import services.PatientServices;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Main {
@@ -84,8 +86,20 @@ public class Main {
         // Test deleteById
         // --------------------------
 
-        //Patient patient = new Patient("Syno","og","6912345608","giorgos","12121212122","6912345678","olimpiados","asdasd");
+        Patient patient = new Patient(
+                "Syno",
+                "og",
+                "6912345608",
+                "giorgos",
+                "12121212122",
+                "6912345678",
+                Gender.MALE,
+                LocalDate.now(),
+                "olimpiados",
+                "asdasd");
 
-        System.out.println(PatientServices.loginPatient("6212323684","29245678390"));
+        pdao.addPatient(patient);
+
+//        System.out.println(PatientServices.loginPatient("6212323684","29245678390"));
     }
 }

@@ -17,6 +17,8 @@ public class initializeTable {
                     amka TEXT NOT NULL UNIQUE,
                     phone_number TEXT NOT NULL UNIQUE,
                     emergency_call TEXT,
+                    gender TEXT NOT NULL,
+                    dateofbirth TEXT NOT NULL,
                     address TEXT NOT NULL,
                     notes TEXT
                 );

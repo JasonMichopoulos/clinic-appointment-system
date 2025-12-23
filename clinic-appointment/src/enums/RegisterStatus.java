@@ -1,4 +1,4 @@
-package Enums;
+package enums;
 
 public enum RegisterStatus {
     WRONG_PHONE("Wrong Phone Number"),

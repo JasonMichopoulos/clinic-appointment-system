@@ -2,12 +2,14 @@ package dao;
 
 import databaseManager.DataBaseConnect;
 import entities.Patient;
+import enums.Gender;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +18,8 @@ public class PatientDAO {
     public void addPatient(Patient patient) {
         String sql =
                 "INSERT INTO patients " +
-                        "(first_name, last_name, father_name, amka, phone_number, emergency_call, address, notes) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                        "(first_name, last_name, father_name, amka, phone_number, emergency_call, gender, dateofbirth, address, notes) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DataBaseConnect.getConnection();
              PreparedStatement pstmt =
@@ -29,8 +31,10 @@ public class PatientDAO {
             pstmt.setString(4, patient.getAmka());
             pstmt.setString(5, patient.getPhoneNumber());
             pstmt.setString(6, patient.getEmergencyCall());
-            pstmt.setString(7, patient.getAddress());
-            pstmt.setString(8, patient.getNotes());
+            pstmt.setString(7, patient.getGender().name());
+            pstmt.setString(8, patient.getDateofbirth().toString());
+            pstmt.setString(9, patient.getAddress());
+            pstmt.setString(10, patient.getNotes());
 
             pstmt.executeUpdate();
 
@@ -158,6 +162,8 @@ public class PatientDAO {
                         "amka = ?, " +
                         "phone_number = ?, " +
                         "emergency_call = ?, " +
+                        "gender = ?, " +
+                        "dateofbirth = ?," +
                         "address = ?, " +
                         "notes = ? " +
                         "WHERE id = ?";
@@ -171,9 +177,11 @@ public class PatientDAO {
             pstmt.setString(4, patient.getAmka());
             pstmt.setString(5, patient.getPhoneNumber());
             pstmt.setString(6, patient.getEmergencyCall());
-            pstmt.setString(7, patient.getAddress());
-            pstmt.setString(8, patient.getNotes());
-            pstmt.setInt(9, id);
+            pstmt.setString(7, patient.getGender().name());
+            pstmt.setString(8, patient.getDateofbirth().toString());
+            pstmt.setString(9, patient.getAddress());
+            pstmt.setString(10, patient.getNotes());
+            pstmt.setInt(11, id);
 
             return pstmt.executeUpdate() > 0;
 
@@ -192,6 +200,8 @@ public class PatientDAO {
         patient.setAmka(rs.getString("amka"));
         patient.setPhoneNumber(rs.getString("phone_number"));
         patient.setEmergencyCall(rs.getString("emergency_call"));
+        patient.setGender(Gender.valueOf(rs.getString("gender")));
+        patient.setDateofbirth(LocalDate.parse(rs.getString("dateofbirth")));
         patient.setAddress(rs.getString("address"));
         patient.setNotes(rs.getString("notes"));
 
