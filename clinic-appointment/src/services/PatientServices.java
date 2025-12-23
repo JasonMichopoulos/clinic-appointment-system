@@ -25,15 +25,15 @@ public class PatientServices {
         return RegisterStatus.SUCCESSFULL.getDesc();
     }
 
-    public static String loginPatient(String phone, String AMKA){
+    public static LoginStatus loginPatient(String AMKA, String phone){
         Patient patient = pdao.findByAMKA(AMKA);
         if(patient==null){
-            return LoginStatus.AMKA_NOT_FOUND.getDesc();
+            return LoginStatus.AMKA_NOT_FOUND;
         }
         if(!patient.getPhoneNumber().equals(phone)){
-            return LoginStatus.PHONE_NOT_FOUND.getDesc();
+            return LoginStatus.PHONE_NOT_FOUND;
         }else{
-            return LoginStatus.SUCCESSFULL.getDesc() + " " + AMKA;
+            return LoginStatus.SUCCESSFULL;
         }
     }
 }

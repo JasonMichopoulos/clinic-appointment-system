@@ -1,12 +1,43 @@
 package gui;
 
+import Utils.DateFormatter;
+import Utils.Validations;
+import enums.Gender;
+import enums.LoginStatus;
+import org.jdatepicker.JDatePicker;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 import org.w3c.dom.Text;
+import services.PatientServices;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.Properties;
 
 
 public class loginWindow  {
+
+    // Login Fields
+    private JTextField amkaField;
+    private JTextField patientPhoneField;
+    private JTextField doctorsNameField;
+    private JTextField doctorsPhoneField;
+
+    //Register Fields
+    private JTextField nameRegisterField;
+    private JTextField surnameRegisterField;
+    private JTextField fathersNameRegisterField;
+    private JTextField phoneNumberRegisterField;
+    private JTextField amkaPatientRegisterField;
+    private JTextField emergencyCallRegisterField;
+    private JComboBox<Gender> genderRegisterComboBox;
+    private JTextField addressRegisterField;
+    private JTextArea notesRegisterAreaField;
+
 
     public loginWindow(){
         JFrame frame = new JFrame("Login");
@@ -49,6 +80,9 @@ public class loginWindow  {
         registerButton.setFocusable(false);
         registerButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         registerButton.setFont(new Font("SansSerif", Font.PLAIN,20));
+        registerButton.addActionListener(e -> {
+            registerDialog(frame);
+        });
         return registerButton;
     }
 
@@ -75,18 +109,211 @@ public class loginWindow  {
         panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
-        JTextField amkaField = TextField();
-        JTextField phoneField = TextField();
+        amkaField = TextField();
+        patientPhoneField = TextField();
 
         panel.add(Box.createVerticalGlue());
         panel.add(Label("AMKA"));
         panel.add(amkaField);
         panel.add(Box.createVerticalStrut(10));
         panel.add(Label("Phone Number"));
-        panel.add(phoneField);
+        panel.add(patientPhoneField);
         panel.add(Box.createVerticalStrut(10));
         panel.add(okayButton(frame));
         panel.add(Box.createVerticalGlue());
+
+        panel.add(loginForDoctorsButton(frame));
+        panel.add(Box.createVerticalStrut(5));
+        panel.add(closeDialogButton(dialog));
+
+        dialog.setContentPane(panel);
+        dialog.setVisible(true);
+        return dialog;
+    }
+
+    private JDialog registerDialog(JFrame frame){
+        JDialog dialog = new JDialog(frame,"Register",true);
+        dialog.setSize(300,800);
+        dialog.setResizable(false);
+        dialog.setLocationRelativeTo(frame);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+
+        nameRegisterField = TextField();
+        surnameRegisterField = TextField();
+        fathersNameRegisterField = TextField();
+        phoneNumberRegisterField = TextField();
+        amkaPatientRegisterField = TextField();
+        emergencyCallRegisterField = TextField();
+        genderRegisterComboBox = new JComboBox<Gender>(Gender.values());
+        UtilDateModel model = new UtilDateModel();
+        model.setSelected(false);
+        JDatePanelImpl datePanel = new JDatePanelImpl(model,new Properties());
+        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateFormatter());
+        addressRegisterField = TextField();
+        notesRegisterAreaField = new JTextArea();
+        notesRegisterAreaField.setLineWrap(true);
+        notesRegisterAreaField.setWrapStyleWord(true);
+
+        JButton sumbitButton = new JButton("Sumbit");
+        sumbitButton.setFocusable(false);
+        sumbitButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        sumbitButton.setFont(new Font("SansSerif",Font.PLAIN,15));
+        sumbitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
+        panel.add(Label("Name*"));
+        panel.add(nameRegisterField);
+        panel.add(Box.createVerticalStrut(10));
+
+        panel.add(Label("Surname*"));
+        panel.add(surnameRegisterField);
+        panel.add(Box.createVerticalStrut(10));
+
+        panel.add(Label("Father's Name"));
+        panel.add(fathersNameRegisterField);
+        panel.add(Box.createVerticalStrut(10));
+
+        panel.add(Label("Phone Number"));
+        panel.add(phoneNumberRegisterField);
+        panel.add(Box.createVerticalStrut(10));
+
+        panel.add(Label("AMKA*"));
+        panel.add(amkaPatientRegisterField);
+        panel.add(Box.createVerticalStrut(10));
+
+        panel.add(Label("Emergency call"));
+        panel.add(emergencyCallRegisterField);
+        panel.add(Box.createVerticalStrut(10));
+
+        panel.add(Label("Gender*"));
+        panel.add(genderRegisterComboBox);
+        panel.add(Box.createVerticalStrut(10));
+
+        panel.add(Label("Birth date*"));
+        panel.add(datePicker);
+        panel.add(Box.createVerticalStrut(10));
+
+        panel.add(Label("Address"));
+        panel.add(addressRegisterField);
+        panel.add(Box.createVerticalStrut(10));
+
+        panel.add(Label("Notes"));
+        panel.add(new JScrollPane(notesRegisterAreaField));
+        panel.add(Box.createVerticalStrut(10));
+
+        panel.add(sumbitButton);
+
+        sumbitButton.addActionListener(e -> {
+            String name = nameRegisterField.getText();
+            String surname = surnameRegisterField.getText();
+            String fathersName = fathersNameRegisterField.getText();
+            String phoneNumber = phoneNumberRegisterField.getText();
+            String amka = amkaPatientRegisterField.getText();
+            String emerg_call = emergencyCallRegisterField.getText();
+            Gender gender = (Gender) genderRegisterComboBox.getSelectedItem();
+            Date selectedDate = (Date) datePicker.getModel().getValue();
+            LocalDate localDate=null;
+            if(selectedDate!=null){
+                localDate = selectedDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            }
+            String address = addressRegisterField.getText();
+            String notes = notesRegisterAreaField.getText();
+            String[] required_fields = new String[]{
+                    name.trim(),
+                    surname.trim(),
+                    phoneNumber.trim(),
+                    amka.trim()
+            };
+            String[] non_required_fields = new String[]{
+                    fathersName.trim(),
+                    emerg_call.trim(),
+                    address.trim(),
+                    notes.trim()
+            };
+            for(int i=0;i<non_required_fields.length;i++){
+                if(Validations.isBlank(non_required_fields[i])){
+                    non_required_fields[i]="Null";
+                }
+            }
+            for(int i=0;i<required_fields.length;i++){
+                if(Validations.isBlank(required_fields[i])){
+                    JOptionPane.showMessageDialog(
+                            dialog,
+                            "Complete the blanks with *",
+                            "Blanks not filled",
+                            JOptionPane.ERROR_MESSAGE,
+                            null
+                    );
+                    return;
+                }
+            }
+            if(localDate==null || !Validations.validDate(localDate)){
+                JOptionPane.showMessageDialog(
+                        dialog,
+                        "Birth not given or birth > time now",
+                        "Invalid date",
+                        JOptionPane.ERROR_MESSAGE,
+                        null
+                );
+                return;
+            }
+            if(!Validations.validAMKA(amka)){
+                JOptionPane.showMessageDialog(
+                        frame,
+                        "AMKA invalid",
+                        "Invalid info",
+                        JOptionPane.ERROR_MESSAGE,
+                        null
+                );
+                return;
+            }
+            if(!Validations.validPhone(phoneNumber)){
+                JOptionPane.showMessageDialog(
+                        frame,
+                        "Phone invalid",
+                        "Invalid info",
+                        JOptionPane.ERROR_MESSAGE,
+                        null
+                );
+                return;
+            }
+
+
+
+        });
+
+        dialog.setContentPane(panel);
+        dialog.setVisible(true);
+        return dialog;
+    }
+
+    private JDialog loginForDoctorsDialog(JFrame frame){
+        JDialog dialog = new JDialog(frame,"Login for doctors",true);
+        dialog.setSize(300,300);
+        dialog.setResizable(false);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.setLocationRelativeTo(frame);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+
+        doctorsNameField = TextField();
+        doctorsPhoneField = TextField();
+
+        panel.add(Box.createVerticalGlue());
+        panel.add(Label("Name"));
+        panel.add(doctorsNameField);
+        panel.add(Box.createVerticalStrut(10));
+        panel.add(Label("Phone"));
+        panel.add(doctorsPhoneField);
+        panel.add(Box.createVerticalGlue());
+        panel.add(Box.createVerticalStrut(10));
+        panel.add(closeDialogButton(dialog));
 
         dialog.setContentPane(panel);
         dialog.setVisible(true);
@@ -98,8 +325,84 @@ public class loginWindow  {
         okButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         okButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         okButton.setFont(new Font("SansSerif",Font.PLAIN,20));
+        okButton.setFocusable(false);
+        okButton.addActionListener(e -> {
+            String amka_patient = amkaField.getText();
+            String phone_patient = patientPhoneField.getText();
+            if(Validations.isBlank(amka_patient) || Validations.isBlank(phone_patient)) {
+                JOptionPane.showMessageDialog(
+                        frame,
+                        "Fill the blanks",
+                        "Empty blanks",
+                        JOptionPane.ERROR_MESSAGE,
+                        null
+                );
+                return;
+            }
+            amka_patient = amka_patient.trim();
+            phone_patient = phone_patient.trim();
 
+            LoginStatus loggin = PatientServices.loginPatient(amka_patient,phone_patient);
+            if(loggin == LoginStatus.AMKA_NOT_FOUND){
+                JOptionPane.showMessageDialog(
+                        frame,
+                        LoginStatus.AMKA_NOT_FOUND.getDesc(),
+                        "AMKA",
+                        JOptionPane.ERROR_MESSAGE,
+                        null
+                );
+                return;
+            }
+            if (loggin == LoginStatus.PHONE_NOT_FOUND){
+                JOptionPane.showMessageDialog(
+                        frame,
+                        LoginStatus.PHONE_NOT_FOUND.getDesc(),
+                        "PHONE",
+                        JOptionPane.ERROR_MESSAGE,
+                        null
+                );
+                return;
+            }
+            if(loggin == LoginStatus.SUCCESSFULL){
+                JOptionPane.showMessageDialog(
+                        frame,
+                        LoginStatus.SUCCESSFULL.getDesc() + " " + amka_patient,
+                        "SUCCESSFULL",
+                        JOptionPane.INFORMATION_MESSAGE,
+                        null
+                );
+            }
+        });
         return okButton;
+    }
+
+
+    private JButton loginForDoctorsButton(JFrame frame){
+        JButton button = new JButton("Login for doctors");
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        button.setFont(new Font("SansSerif",Font.PLAIN,15));
+        button.setFocusable(false);
+        button.addActionListener(e -> {
+            Component source = (Component) e.getSource();
+            Window window = SwingUtilities.getWindowAncestor(source);
+            window.dispose();
+            loginForDoctorsDialog(frame);
+
+        });
+        return button;
+    }
+
+    private JButton closeDialogButton(JDialog dialog){
+        JButton button = new JButton("Close");
+        button.setFocusable(false);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        button.setFont(new Font("SansSerif",Font.PLAIN,15));
+        button.addActionListener(e ->{
+            dialog.dispose();
+        });
+        return button;
     }
 
     private JLabel Label(String text){

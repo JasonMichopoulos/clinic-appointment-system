@@ -1,5 +1,7 @@
 package Utils;
 
+import java.time.LocalDate;
+
 public class Validations {
 
 
@@ -12,5 +14,10 @@ public class Validations {
     public static boolean validPhone(String phone){
         return phone.trim().matches("^[0-9]{10}$");
     }
-
+    public static boolean isBlank(String string){
+        return string == null || string.trim().isEmpty();
+    }
+    public static boolean validDate(LocalDate date){
+        return !date.isAfter(LocalDate.now());
+    }
 }
