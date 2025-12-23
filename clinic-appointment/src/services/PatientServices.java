@@ -33,7 +33,7 @@ public class PatientServices {
         if(!patient.getPhoneNumber().equals(phone)){
             return LoginStatus.PHONE_NOT_FOUND.getDesc();
         }else{
-            return LoginStatus.SUCCESSFULL.getDesc() + " amka: " + AMKA;
+            return LoginStatus.SUCCESSFULL.getDesc() + " " + AMKA;
         }
     }
 }
