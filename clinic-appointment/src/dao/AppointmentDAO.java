@@ -47,28 +47,28 @@ public class AppointmentDAO {
         }
     }
 
-    public Appointment findById(int id){
-        String sql="SELECT * FROM appointments WHERE id=?";
-        Appointment appointment=null;
+//    public Appointment findById(int id){
+//        String sql="SELECT * FROM appointments WHERE id=?";
+//        Appointment appointment=null;
+//
+//        try(Connection conn=DataBaseConnect.getConnection();
+//           PreparedStatement pstmt= conn.prepareStatement(sql)){
+//
+//            pstmt.setInt(1,id);
+//
+//            try (ResultSet rs = pstmt.executeQuery()) {
+//                if (rs.next()) {
+//                    appointment = mapRowToAppointment(rs);
+//                }
+//            }
+//
+//
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
 
-        try(Connection conn=DataBaseConnect.getConnection();
-           PreparedStatement pstmt= conn.prepareStatement(sql)){
-
-            pstmt.setInt(1,id);
-
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    appointment = mapRowToAppointment(rs);
-                }
-            }
-
-
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
+//    }
 
 
 

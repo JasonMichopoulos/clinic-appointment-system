@@ -1,5 +1,7 @@
 package gui.patientdashboard;
 
+import gui.patientdashboard.tabPanels.DoctorsTab;
+
 import javax.swing.*;
 
 public class PatientDashBoard extends JFrame {
@@ -20,10 +22,9 @@ public class PatientDashBoard extends JFrame {
 
         tabbedPane.addTab("New Appointment", new JPanel());
         tabbedPane.addTab("My appointments", new JPanel());
-        tabbedPane.addTab("Doctors",new JPanel());
+        tabbedPane.addTab("Doctors",new DoctorsTab());
         tabbedPane.addTab("Account",new JPanel());
 
-//        tabbedPane.
         panel.add(tabbedPane);
         setLocationRelativeTo(null);
         setContentPane(panel);

@@ -84,8 +84,8 @@ public class Main {
         // --------------------------
         // Test addDoctor
         // --------------------------
-        // Doctor doctor = new Doctor("Nikos", "Xrhstou", "123456789", "Kardiologos");
-        // ddao.addDoctor(doctor);
+//        Doctor doctor = new Doctor("Giorgos", "Xrhstou", "123182789", "Gunekologos");
+//        ddao.addDoctor(doctor);
 
         // --------------------------
         // Test deleteById
@@ -109,8 +109,11 @@ public class Main {
 
         FlatDarkPurpleIJTheme.setup();
 
+
         SwingUtilities.invokeLater(() -> {
-            new DoctorDashBoard();
+            new PatientDashBoard();
         });
+
+
     }
 }

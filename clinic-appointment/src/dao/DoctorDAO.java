@@ -167,6 +167,16 @@ public class DoctorDAO {
     }
 
 
+    private Doctor mapRowToDoctor(ResultSet rs) throws SQLException {
+        Doctor doctor = new Doctor();
+        doctor.setId(rs.getInt("id"));
+        doctor.setFirstName(rs.getString("first_name"));
+        doctor.setLastName(rs.getString("last_name"));
+        doctor.setPhoneNumber(rs.getString("phone_number"));
+        doctor.setSector(rs.getString("sector"));
+        return doctor;
+    }
+
 
 
 
