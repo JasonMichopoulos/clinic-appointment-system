@@ -57,8 +57,8 @@ public class initializeTable {
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     patient_id INTEGER NOT NULL,
                     doctor_id INTEGER NOT NULL,
-                    appointment_date_start TEXT NOT NULL,
-                    appointment_date_end TEXT NOT NULL,
+                    appointment_date_start DATETIME NOT NULL,
+                    appointment_date_end DATETIME NOT NULL,
                     is_done INTEGER DEFAULT 0,
                     FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE,
                     FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE

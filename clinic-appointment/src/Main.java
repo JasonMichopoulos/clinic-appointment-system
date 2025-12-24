@@ -1,47 +1,33 @@
+import dao.AppointmentDAO;
 import dao.DoctorDAO;
 import dao.PatientDAO;
-import databaseManager.DataBaseConnect;
 import databaseManager.initializeTable;
+import entities.Appointment;
 import entities.Doctor;
 import entities.Patient;
 import enums.Gender;
-import services.PatientServices;
 
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListResourceBundle;
+import java.time.LocalDateTime;
 
 public class Main {
 
     public static void main(String[] args) throws SQLException {
         // Δημιουργία πινάκων στη βάση
-        initializeTable.createTables();
+        //initializeTable.createTables();
 
         PatientDAO pdao = new PatientDAO();
         DoctorDAO ddao = new DoctorDAO();
+        AppointmentDAO adao=new AppointmentDAO();
 
         // --------------------------
         // Test addPatient
         // --------------------------
         // Παράδειγμα δημιουργίας ασθενών με null ID
-        // Patient patient = new Patient("Xarhs","Makridhs","6912345678","Anesths","123456789011","6912345677","Anthokipwn 36","Problhma sthn kardia");
-
-        // Παράδειγμα δημιουργίας και προσθήκης ασθενών
-
-//        Patient patient1 = new Patient("Nikos", "Kalantas", "6912343678", "Kwstas", "123456689011", "6982345677", "Anthokipwn 36", "Problhma sthn kardia");
-//        pdao.addPatient(patient1);
-//
-//        Patient patient2 = new Patient("Xrhstos", "Papadopoulos", "6912343674", "Kwstas", "123453689011", "6902345677", "Anthokipwn 36", "Problhma sthn kardia");
-//        pdao.addPatient(patient2);
-//
-//        Patient patient3 = new Patient("Makhs", "Papadopoulos", "6212323664", "Xrhstos", "19245678990", "9902345672", "Anthokipwn 36", "Problhma sthn kardia");
-//        pdao.addPatient(patient3);
-//
-//        Patient patient4 = new Patient("Nikos", "Xrhstou", "6212323684", "Xrhstos", "29245678390", "9902325372", "Anthokipwn 36", "Problhma sthn kardia");
-//        pdao.addPatient(patient4);
+//        Patient patient=new Patient("Giannhs","Papadopoulos","6912325278","Kwstas","12145678901","2909875543",Gender.MALE,LocalDate.of(1990,5,15),"Athens","provlhma sthn kardia");
+//        pdao.addPatient(patient);
 
 
         // --------------------------
@@ -78,13 +64,13 @@ public class Main {
         // --------------------------
         // Test deleteAll
         // --------------------------
-        // pdao.deleteAll();
+         //pdao.deleteAll();
 
         // --------------------------
         // Test addDoctor
         // --------------------------
-        //Doctor doctor = new Doctor("Nikos", "Xrhstou", "123456789", "Kardiologos");
-        //ddao.addDoctor(doctor);
+//        Doctor doctor = new Doctor("Nikos", "Xrhstou", "133456789", "Kardiologos");
+//        ddao.addDoctor(doctor);
 
         // --------------------------
         // Test deleteById
@@ -124,10 +110,80 @@ public class Main {
 //            System.out.println(d);
 //        }
 
+        //ddao.deleteAll();
+
+//        //TEST addAppointment
+//        Appointment appointment=new Appointment();
+//        appointment.setPatient(patient);
+//        appointment.setDoctor(doctor);
+//        appointment.setStart_date(LocalDateTime.of(2025,1,20,10,0));
+//        appointment.setEnd_date(LocalDateTime.of(2025, 1, 20, 10, 30));
+
+//        appointment.setIs_done(0);
+//        AppointmentDAO adao= new AppointmentDAO();
+//        adao.addAppointment(appointment);
+
+//        Patient patient = new Patient("Giannhs", "Papadopoulos", "6912325278", "Kwstas", "12145678901", "2909875543", Gender.MALE, LocalDate.of(1990,5,15), "Athens", "provlhma sthn kardia");
+//        pdao.addPatient(patient);
+//
+//        Doctor doctor = new Doctor("Nikos", "Xrhstou", "123456789", "Kardiologos");
+//        ddao.addDoctor(doctor);
+//
+//        Appointment appointment = new Appointment();
+//        appointment.setPatient(patient);
+//        appointment.setDoctor(doctor);
+//        appointment.setStart_date(LocalDateTime.of(2025,1,20,10,0));
+//        appointment.setEnd_date(LocalDateTime.of(2025,1,20,10,30));
+//        appointment.setIs_done(0);
+//        adao.addAppointment(appointment);
+
+        Patient patient = new Patient(
+                "Giannhs",              // firstName
+                "Papadopoulos",         // lastName
+                "6912325278",           // phoneNumber (UNIQUE!)
+                "Kwstas",               // fathersName
+                "12145678901",          // amka (UNIQUE!)
+                "2909875543",           // emergencyCall
+                Gender.MALE,            // gender
+                LocalDate.of(1990,5,15), // dateofbirth
+                "Athens",               // address
+                "provlhma sthn kardia"  // notes
+        );
+        pdao.addPatient(patient);  // Σιγουρέψου ότι παίρνει το ID μετά το insert
+
+        // --------------------------
+        // Δημιουργία Doctor
+        // --------------------------
+        Doctor doctor = new Doctor(
+                "Nikos",                // firstName
+                "Xrhstou",              // lastName
+                "123456789",            // phoneNumber (UNIQUE!)
+                "Kardiologos"           // sector
+        );
+        ddao.addDoctor(doctor);      // Σιγουρέψου ότι παίρνει το ID μετά το insert
+
+        // --------------------------
+        // Δημιουργία Appointment
+        // --------------------------
+        Appointment appointment = new Appointment();
+        appointment.setPatient(patient);
+        appointment.setDoctor(doctor);
+        appointment.setStart_date(LocalDateTime.of(2025,1,20,10,0));
+        appointment.setEnd_date(LocalDateTime.of(2025,1,20,10,30));
+        appointment.setIs_done(0);
+
+        // Προσθήκη Appointment στη βάση
+        adao.addAppointment(appointment);
+
+//        ddao.deleteAll();
+//        pdao.deleteAll();
+
+
+
+
+
+
+
+
     }
-
-
-
-
-
 }

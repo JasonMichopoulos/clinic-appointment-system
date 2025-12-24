@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="636fabf2-f07a-49ee-8647-5b8c4a91498c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeInsightSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clinic-appointment/src/dao/AppointmentDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clinic-appointment/resources/clinic.db" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/resources/clinic.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clinic-appointment/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clinic-appointment/src/dao/DoctorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/dao/DoctorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clinic-appointment/src/entities/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/entities/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clinic-appointment/src/databaseManager/initializeTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/databaseManager/initializeTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clinic-appointment/src/entities/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/entities/Appointment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +114,7 @@
       <workItem from="1766500904962" duration="53000" />
       <workItem from="1766500980093" duration="4431000" />
       <workItem from="1766527296583" duration="2000" />
+      <workItem from="1766527417725" duration="5719000" />
     </task>
     <servers />
   </component>
