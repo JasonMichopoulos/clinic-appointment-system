@@ -3,7 +3,7 @@ package enums;
 public enum RegisterStatus {
     WRONG_PHONE("Wrong Phone Number"),
     WRONG_AMKA("Wrong AMKA"),
-    SUCCESSFULL("Successfully logged in");
+    SUCCESSFULL("Successfully registered");
 
     private final String desc;
     RegisterStatus(String desc){

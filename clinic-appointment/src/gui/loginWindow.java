@@ -2,8 +2,10 @@ package gui;
 
 import Utils.DateFormatter;
 import Utils.Validations;
+import entities.Patient;
 import enums.Gender;
 import enums.LoginStatus;
+import enums.RegisterStatus;
 import org.jdatepicker.JDatePicker;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -177,7 +179,7 @@ public class loginWindow  {
         panel.add(fathersNameRegisterField);
         panel.add(Box.createVerticalStrut(10));
 
-        panel.add(Label("Phone Number"));
+        panel.add(Label("Phone Number*"));
         panel.add(phoneNumberRegisterField);
         panel.add(Box.createVerticalStrut(10));
 
@@ -236,11 +238,14 @@ public class loginWindow  {
             };
             for(int i=0;i<non_required_fields.length;i++){
                 if(Validations.isBlank(non_required_fields[i])){
-                    non_required_fields[i]="Null";
+                    non_required_fields[i]=null;
+                }
+                else {
+                    non_required_fields[i] = non_required_fields[i].trim();
                 }
             }
-            for(int i=0;i<required_fields.length;i++){
-                if(Validations.isBlank(required_fields[i])){
+            for (String requiredField : required_fields) {
+                if (Validations.isBlank(requiredField)) {
                     JOptionPane.showMessageDialog(
                             dialog,
                             "Complete the blanks with *",
@@ -280,6 +285,69 @@ public class loginWindow  {
                         null
                 );
                 return;
+            }
+
+
+            Patient patient = new Patient(
+                    name.trim(),
+                    surname.trim(),
+                    phoneNumber.trim(),
+                    fathersName.trim(),
+                    amka.trim(),
+                    emerg_call.trim(),
+                    gender,
+                    localDate,
+                    address.trim(),
+                    notes.trim()
+            );
+
+            RegisterStatus registerStatus = PatientServices.registerPatient(patient);
+            if(registerStatus==RegisterStatus.WRONG_AMKA){
+                JOptionPane.showMessageDialog(
+                        dialog,
+                        RegisterStatus.WRONG_AMKA.getDesc(),
+                        "invalid info",
+                        JOptionPane.ERROR_MESSAGE,
+                        null
+                );
+                return;
+            }
+            if(registerStatus==RegisterStatus.WRONG_PHONE){
+                JOptionPane.showMessageDialog(
+                        dialog,
+                        RegisterStatus.WRONG_PHONE.getDesc(),
+                        "invalid info",
+                        JOptionPane.ERROR_MESSAGE,
+                        null
+                );
+                return;
+            }
+            if(registerStatus==RegisterStatus.SUCCESSFULL){
+                JOptionPane.showMessageDialog(
+                        dialog,
+                        RegisterStatus.SUCCESSFULL.getDesc(),
+                        "Success",
+                        JOptionPane.INFORMATION_MESSAGE,
+                        null
+                );
+                JOptionPane.showMessageDialog(
+                        dialog,
+                        "Patient: \n" +
+                                name + "\n" +
+                                surname + "\n" +
+                                phoneNumber + "\n" +
+                                fathersName + "\n" +
+                                amka + "\n" +
+                                emerg_call + "\n" +
+                                gender + "\n" +
+                                localDate + "\n" +
+                                address + "\n" +
+                                notes + "\n",
+                        "Patient info",
+                        JOptionPane.INFORMATION_MESSAGE,
+                        null
+                );
+                dialog.dispose();
             }
 
 
