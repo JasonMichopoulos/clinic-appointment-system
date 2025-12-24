@@ -2,6 +2,7 @@ package gui;
 
 import Utils.DateFormatter;
 import Utils.Validations;
+import com.formdev.flatlaf.FlatLightLaf;
 import entities.Patient;
 import enums.Gender;
 import enums.LoginStatus;
@@ -373,6 +374,13 @@ public class loginWindow  {
         doctorsNameField = TextField();
         doctorsPhoneField = TextField();
 
+        JButton button = new JButton("Done");
+        button.setFocusable(false);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        button.setFont(new Font("SansSerif",Font.PLAIN,20));
+
+
         panel.add(Box.createVerticalGlue());
         panel.add(Label("Name"));
         panel.add(doctorsNameField);
@@ -381,7 +389,11 @@ public class loginWindow  {
         panel.add(doctorsPhoneField);
         panel.add(Box.createVerticalGlue());
         panel.add(Box.createVerticalStrut(10));
+        panel.add(button);
+        panel.add(Box.createVerticalStrut(10));
         panel.add(closeDialogButton(dialog));
+
+
 
         dialog.setContentPane(panel);
         dialog.setVisible(true);

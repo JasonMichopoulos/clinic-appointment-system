@@ -1,12 +1,16 @@
+import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
 import dao.DoctorDAO;
 import dao.PatientDAO;
 import databaseManager.initializeTable;
 import entities.Doctor;
 import entities.Patient;
 import enums.Gender;
+import gui.doctordashboard.DoctorDashBoard;
 import gui.loginWindow;
+import gui.patientdashboard.PatientDashBoard;
 import services.PatientServices;
 
+import javax.swing.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -103,6 +107,10 @@ public class Main {
 
 //        System.out.println(PatientServices.loginPatient("6212323684","29245678390"));
 
-        loginWindow login = new loginWindow();
+        FlatDarkPurpleIJTheme.setup();
+
+        SwingUtilities.invokeLater(() -> {
+            new DoctorDashBoard();
+        });
     }
 }
