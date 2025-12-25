@@ -36,4 +36,12 @@ public class PatientServices {
             return LoginStatus.SUCCESSFULL;
         }
     }
+
+    //updateinfos w validation
+    //notification service
+    //appointment confirmations
+
+
+
+
 }

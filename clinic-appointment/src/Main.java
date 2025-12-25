@@ -111,7 +111,7 @@ public class Main {
 
 
         SwingUtilities.invokeLater(() -> {
-            new PatientDashBoard();
+            new loginWindow();
         });
 
 
