@@ -38,6 +38,7 @@ public class PatientDAO {
 
             pstmt.executeUpdate();
 
+
             try (ResultSet rs = pstmt.getGeneratedKeys()) {
                 if (rs.next()) {
                     patient.setId(rs.getInt(1));
@@ -45,8 +46,9 @@ public class PatientDAO {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println("Error During execute of method"+e.getMessage());
         }
+
     }
 
     public void deleteById(int id) {
@@ -59,7 +61,7 @@ public class PatientDAO {
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println("Error During execute of method"+e.getMessage());
         }
     }
 
@@ -71,6 +73,7 @@ public class PatientDAO {
 
             pstmt.setString(1, amka);
             pstmt.executeUpdate();
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
