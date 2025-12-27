@@ -51,28 +51,32 @@ public class PatientDAO {
 
     }
 
-    public void deleteById(int id) {
+    public boolean deleteById(int id) {
         String sql = "DELETE FROM patients WHERE id = ?";
 
         try (Connection conn = DataBaseConnect.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setInt(1, id);
-            pstmt.executeUpdate();
+            int affectedRows=pstmt.executeUpdate();
+
+            return affectedRows>0;
 
         } catch (SQLException e) {
             System.err.println("Error During execute of method"+e.getMessage());
         }
     }
 
-    public void deleteByAMKA(String amka) {
+    public boolean deleteByAMKA(String amka) {
         String sql = "DELETE FROM patients WHERE amka = ?";
 
         try (Connection conn = DataBaseConnect.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, amka);
-            pstmt.executeUpdate();
+            int affectedRows=pstmt.executeUpdate();
+
+            return affectedRows>0;
 
 
         } catch (SQLException e) {

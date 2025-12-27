@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="636fabf2-f07a-49ee-8647-5b8c4a91498c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/clinic-appointment/src/enums/ServiceEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/clinic-appointment/resources/clinic.db" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/resources/clinic.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clinic-appointment/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clinic-appointment/src/dao/PatientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/dao/PatientDAO.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/clinic-appointment/src/dao/PatientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/dao/PatientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clinic-appointment/src/services/PatientServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/clinic-appointment/src/services/PatientServices.java" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -111,7 +118,14 @@
       <workItem from="1766500980093" duration="4431000" />
       <workItem from="1766527296583" duration="2000" />
       <workItem from="1766527417725" duration="5719000" />
+<<<<<<< Updated upstream
       <workItem from="1766583444579" duration="9347000" />
+=======
+      <workItem from="1766673036311" duration="1063000" />
+      <workItem from="1766676299469" duration="603000" />
+      <workItem from="1766761910658" duration="434000" />
+      <workItem from="1766859708464" duration="2374000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
