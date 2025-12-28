@@ -13,4 +13,8 @@ public class Validations {
         return phone.trim().matches("^[0-9]{10}$");
     }
 
+    public static boolean validSector(String sector){return sector.matches("^[a-zA-Zα-ωΑ-Ω\\s]{3,30}$");}
+
+    public static boolean validLastName(String lastName){return lastName.matches("^[a-zA-Zα-ωΑ-Ω\\s]{3,30}$");}
+
 }

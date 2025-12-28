@@ -41,8 +41,7 @@ public class PatientServices {
             return LoginStatus.SUCCESSFULL.getDesc() + " amka: " + AMKA;
         }
     }
-<<<<<<< Updated upstream
-=======
+
 
     public ServiceEnum updatePatient(Patient patient){
         Patient existingPatient=pdao.findById(patient.getId());
@@ -142,16 +141,5 @@ public class PatientServices {
             if (p.getFirstName().contains(keyword) || p.getLastName().contains(keyword) || p.getFathersName().contains(keyword) || p.getAddress().contains(keyword) || p.getNotes().contains(keyword))//αναζηταει αναμεσα σε ονομα επιθετο ονομα πατρος διευθυνση και σημειωσεις
                 result.add(p);
         return result;
-
-
-
-
-
-
     }
-
-
-
-
-    
 }
